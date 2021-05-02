@@ -1,0 +1,233 @@
+<html>
+
+<head>
+
+</head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<body>
+
+<input type="button" id="myBtn" value="Start" class="fa" style="border-radius: 6px; color: black; border: 0;outline: none; font-size:40px; padding: 40px;">&nbsp;
+
+	<div id="myModal" class="modal">
+
+	  <div class="modal-content">
+
+	<h1 style="margin-left: 20px;">Add Revenue Group</h1>
+
+	<h4 style="margin-left: 20px;">Revenue Group Title</h4>
+	
+	<form>
+
+		<input type="textfield" class="textbox"><br><br>
+
+
+		<p style="margin-left: 20px;">if 
+			<select class="dropdown"> 
+				<option value="All">All</option> 
+				<option value="All2">All2</option> 
+				<option value="All3">All3</option>
+			</select>
+		of the below conditions are met</p><br>
+
+	<div style="background-color: #a19c9c; height: 280px;">
+
+		<div class="cent">
+
+		<select class="dropdown">
+				<option value="All">All</option> 
+				<option value="All2">All2</option> 
+				<option value="All3">All3</option>
+		</select>
+
+		<select class="dropdown"> 
+				<option value="All">All</option> 
+				<option value="All2">All2</option> 
+				<option value="All3">All3</option>
+		</select>
+
+		<input type="textfield" placeholder="insert parameter" style="width: 600px; border-radius: 6px; height: 30px; border:1px solid black; outline: none;">
+		<input type="button" id="myBtn2" value="add rule" class="fa" style="border-radius: 6px; color: black; border: 0;outline: none; font-size: 20px; height: 25px;">&nbsp;
+		<button><i style="font-size:20px;" class="fa"><b>&#8722;</b></button></i>&nbsp;
+		<button id="myBtn3"><i style="font-size:20px" class="fa">&#xf067;</i></button><br><br>
+
+		</div>
+
+	    <div class="field_wrapper">
+
+		    <div style="margin-left: 20px;">
+		    	<h3>Rule 1</h3>
+
+		    	<select class="dropdown">
+
+					<option value="All">All</option> 
+					<option value="All2">All2</option> 
+					<option value="All3">All3</option>
+
+				</select>
+
+				<select class="dropdown">
+
+					<option value="All">All</option> 
+					<option value="All2">All2</option> 
+					<option value="All3">All3</option>
+					
+				</select>
+
+		        <input type="text" name="field_name[]" value="" placeholder="insert parameter" style="width: 600px; border-radius: 6px; height: 30px; border:1px solid black; outline: none;" />
+		        <a href="javascript:void(0);" class="add_button" title="Add field"><i style="font-size:20px" class="fa">&#xf067;</i></a>
+		    </div>
+
+
+	</div>
+
+		
+	</form>
+	   
+		    <div>
+
+				<div class="field_wrapper2">
+
+				    <div style="margin-left: 20px;">
+				    	<h3>Rule 2</h3>
+
+				    	<select class="dropdown">
+
+							<option value="All">All</option> 
+							<option value="All2">All2</option> 
+							<option value="All3">All3</option>
+
+						</select>
+
+						<select class="dropdown">
+
+							<option value="All">All</option> 
+							<option value="All2">All2</option> 
+							<option value="All3">All3</option>
+							
+						</select>
+
+				        <input type="text" name="field_name2[]" value="" placeholder="insert parameter" style="width: 600px; border-radius: 6px; height: 30px; border:1px solid black; outline: none;" />
+				        <a href="javascript:void(0);" class="add_button2" title="Add field2"><i style="font-size:20px" class="fa">&#xf067;</i></a>
+				    </div>
+
+				</div>
+
+			  </div>
+
+			</div>
+
+			<p style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px;">Then revenue is <input type="text" placeholder="%"> </p>
+
+		<input type="button" value="Confirm" class="btn3" style="background-color: orange; color: white;">
+		<input type="button" value="Cancel" id="cancelBtn" class="btn3" style="background-color: grey; color: white;">
+
+
+		</div>
+
+	</div>
+
+
+<script>
+
+var modal = document.getElementById("myModal");
+
+
+var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
+
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+btn2.onclick = function() {
+  modal.style.display = "block";
+}
+
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxField = 10;
+    var addButton = $('.add_button');
+    var addButton2 = document.getElementById("myBtn2");
+    var wrapper = $('.field_wrapper');
+    var fieldHTML = '<div><input type="text" name="field_name[]" value="" placeholder="insert parameter" class="del" /><a href="javascript:void(0);" class="remove_button"><i style="font-size:25px" class="fa" ><b>&#8722;</b></i></a></div>';
+    var x = 1;
+    
+    
+    $(addButton).click(function(){
+        
+        if(x < maxField){ 
+            x++;
+            $(wrapper).append(fieldHTML);
+        }
+    });
+
+    $(addButton2).click(function(){
+
+        if(x < maxField){ 
+            x++; 
+            $(wrapper).append(fieldHTML);
+        }
+    });
+    
+    
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); 
+        x--; 
+    });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxField2 = 10; 
+    var addButton3 = $('.add_button2'); 
+    var addButton4 = document.getElementById("myBtn3");
+    var wrapper2 = $('.field_wrapper2'); 
+    var fieldHTML2 = '<div><input type="text" name="field_name2[]" value="" placeholder="insert parameter" class="del" /><a href="javascript:void(0);" class="remove_button2"><i style="font-size:25px" class="fa"><b>&#8722;</b></i></a></div>';
+    var x = 1;
+    
+ 
+    $(addButton3).click(function(){
+
+        if(x < maxField2){ 
+            x++; 
+            $(wrapper2).append(fieldHTML2); 
+        }
+    });
+
+     $(addButton4).click(function(){
+        
+        if(x < maxField){ 
+            x++; 
+            $(wrapper).append(fieldHTML);
+        }
+    });
+    
+    
+    $(wrapper2).on('click', '.remove_button2', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--; 
+    });
+});
+</script>
+
+</body>
+
+</html>
