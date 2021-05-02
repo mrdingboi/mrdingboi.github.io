@@ -51,7 +51,7 @@ button{
 
 }
 
-input[type="text"]::placeholder { 
+#percent::placeholder { 
                   
                 text-align: right;
             }
